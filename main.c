@@ -1,6 +1,5 @@
 #include "monty.h"
 int value;
-
 /**
  * main - entry point for the monty interpreter program
  * @argc: argument counts fron the CLI
