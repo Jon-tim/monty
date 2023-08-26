@@ -14,7 +14,7 @@ void (*op_check(char *str, unsigned int line_number))(stack_t **, unsigned int)
 
 	instruction_t instructions[] = {
 		{"push", push_instruction},
-		{"pall$", pall_instruction},
+		{"pall", pall_instruction},
 		{"pint", pint_instruction},
 		{"pop", pop_instruction},
 		{"swap", swap_instruction},
