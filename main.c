@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
 		void (*op_fn)(stack_t **, unsigned int);
 		char *op_arg;
 
+		if (buffer[0] == '#')
+			continue;
 		opcode = strtok(buffer, " \n");
 		if (strcmp(opcode, "push") == 0)
 		{
