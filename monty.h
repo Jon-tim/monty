@@ -47,6 +47,8 @@ void swap_instruction(stack_t **stack, unsigned int line_number);
 void add_instruction(stack_t **stack, unsigned int line_number);
 void nop_instruction(stack_t **stack, unsigned int line_number);
 void sub_instruction(stack_t **stack, unsigned int line_number);
+void div_instruction(stack_t **stack, unsigned int line_number);
+
 /***/
 void(*op_check(char *str, unsigned int line_number))(stack_t **, unsigned int);
 

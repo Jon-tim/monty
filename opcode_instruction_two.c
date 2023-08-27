@@ -66,3 +66,33 @@ void sub_instruction(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * div_instruction - divides the top two elements of the stack
+ * @stack: the stack
+ * @line_number: the line number
+ */
+void div_instruction(stack_t **stack, unsigned int line_number)
+{
+	stack_t *topGun = NULL;
+	stack_t *secondGun = NULL;
+
+	if (*stack && (*stack)->next)
+	{
+		topGun = *stack;
+		secondGun = (*stack)->next;
+		if (topGun->n == 0)
+		{
+			fprintf(stderr, "L%d: division by zero\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+		secondGun->n = secondGun->n / topGun->n;
+		topGun->next->prev = NULL;
+		free(topGun);
+		*stack = secondGun;
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+	}
+}
