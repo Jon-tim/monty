@@ -58,3 +58,41 @@ void pchar_instruction(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * pstr_instruction - function that prints the string
+ * starting at the top of the stack
+ * @stack: the stack
+ * @line_number: the line number
+ */
+void pstr_instruction(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = NULL;
+	char holder[30];
+	int i = 0;
+
+	(void)line_number;
+
+	if (*stack)
+	{
+		tmp = *stack;
+		while (tmp->n >= 0 && tmp->n <= 127)
+		{
+			if (tmp->n != 0)
+			{
+				holder[i] = (char)tmp->n;
+				i++;
+			}
+			else
+			{
+				break;
+			}
+			tmp = tmp->next;
+		}
+		holder[i] = '\0';
+		printf("%s\n", holder);
+	}
+	else
+	{
+		printf("\n");
+	}
+}
