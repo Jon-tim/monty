@@ -75,7 +75,7 @@ void pstr_instruction(stack_t **stack, unsigned int line_number)
 	if (*stack)
 	{
 		tmp = *stack;
-		while (tmp->n >= 0 && tmp->n <= 127)
+		while (tmp && tmp->n >= 0 && tmp->n <= 127)
 		{
 			if (tmp->n != 0)
 			{
