@@ -24,6 +24,7 @@ void (*op_check(char *str, unsigned int line_number))(stack_t **, unsigned int)
 		{"div", div_instruction},
 		{"mul", mul_instruction},
 		{"mod", mod_instruction},
+		{"pchar", pchar_instruction},
 		{NULL, NULL}};
 
 	for (i = 0; instructions[i].opcode != NULL; i++)
