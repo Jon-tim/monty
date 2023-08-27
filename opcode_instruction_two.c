@@ -37,5 +37,32 @@ void nop_instruction(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
+}
 
+/**
+ * sub_instruction - subtracts the top two elements of the stack
+ * @stack: the stack
+ * @line_number: the line number
+*/
+void sub_instruction(stack_t **stack, unsigned int line_number)
+{
+	int diff = 0;
+	stack_t *topGun = NULL;
+	stack_t *secondGun = NULL;
+
+	if (*stack && (*stack)->next)
+	{
+		topGun = *stack;
+		secondGun = (*stack)->next;
+		diff = secondGun->n - topGun->n;
+		secondGun->n = diff;
+		topGun->next->prev = NULL;
+		free(topGun);
+		*stack = secondGun;
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 }

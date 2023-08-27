@@ -20,6 +20,7 @@ void (*op_check(char *str, unsigned int line_number))(stack_t **, unsigned int)
 		{"swap", swap_instruction},
 		{"add", add_instruction},
 		{"nop", nop_instruction},
+		{"sub", sub_instruction},
 		{NULL, NULL}};
 
 	for (i = 0; instructions[i].opcode != NULL; i++)
