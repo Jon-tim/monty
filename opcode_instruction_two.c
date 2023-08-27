@@ -96,3 +96,30 @@ void div_instruction(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 	}
 }
+
+/**
+ * mul_instruction - multiplies the top two elements of the stack
+ * @stack: the stack
+ * @line_number: the line number
+ */
+void mul_instruction(stack_t **stack, unsigned int line_number)
+{
+	stack_t *topGun = NULL;
+	stack_t *secondGun = NULL;
+
+	if (*stack && (*stack)->next)
+	{
+		topGun = *stack;
+		secondGun = (*stack)->next;
+
+		secondGun->n = secondGun->n * topGun->n;
+		topGun->next->prev = NULL;
+		free(topGun);
+		*stack = secondGun;
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
