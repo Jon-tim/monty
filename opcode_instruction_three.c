@@ -96,3 +96,59 @@ void pstr_instruction(stack_t **stack, unsigned int line_number)
 		printf("\n");
 	}
 }
+
+/**
+ * rotl_instruction - function that rotates the stack to the top
+ * @stack: the stack
+ * @line_number: the line number
+ */
+void rotl_instruction(stack_t **stack, unsigned int line_number)
+{
+
+	(void)line_number;
+
+	if (*stack && (*stack)->next)
+	{
+		stack_t *topGun = *stack;
+		stack_t *secondGun = (*stack)->next;
+
+		while (topGun->next)
+		{
+			topGun = topGun->next;
+		}
+
+		topGun->next = *stack;
+		(*stack)->prev = topGun;
+		(*stack) = secondGun;
+		secondGun->prev = NULL;
+		topGun->next->next = NULL;
+	}
+}
+
+/**
+ * rotr_instruction - function that rotates the stack to the bottom
+ * @stack: the stack
+ * @line_number: the line number
+ */
+void rotr_instruction(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	if (*stack && (*stack)->next)
+	{
+		stack_t *last = *stack;
+		stack_t *secondLast = NULL;
+
+		while (last->next)
+		{
+			secondLast = last;
+			last = last->next;
+		}
+
+		last->next = *stack;
+		(*stack)->prev = last;
+		secondLast->next = NULL;
+		(*stack) = last;
+		last->prev = NULL;
+	}
+}

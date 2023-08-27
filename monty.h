@@ -52,6 +52,8 @@ void mul_instruction(stack_t **stack, unsigned int line_number);
 void mod_instruction(stack_t **stack, unsigned int line_number);
 void pchar_instruction(stack_t **stack, unsigned int line_number);
 void pstr_instruction(stack_t **stack, unsigned int line_number);
+void rotl_instruction(stack_t **stack, unsigned int line_number);
+void rotr_instruction(stack_t **stack, unsigned int line_number);
 
 /***/
 void(*op_check(char *str, unsigned int line_number))(stack_t **, unsigned int);
