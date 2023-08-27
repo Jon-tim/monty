@@ -54,7 +54,7 @@ void sub_instruction(stack_t **stack, unsigned int line_number)
 	{
 		topGun = *stack;
 		secondGun = (*stack)->next;
-		diff = secondGun->n - topGun->n;
+		diff = topGun->n - secondGun->n;
 		secondGun->n = diff;
 		topGun->next->prev = NULL;
 		free(topGun);
