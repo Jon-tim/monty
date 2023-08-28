@@ -1,5 +1,5 @@
 #include "monty.h"
-int value;
+int data_structure = 0;
 /**
  * main - entry point for the monty interpreter program
  * @argc: argument counts fron the CLI
@@ -38,7 +38,6 @@ int main(int argc, char *argv[])
 		if (strcmp(opcode, "push") == 0)
 		{
 			op_arg = strtok(NULL, " ");
-			value = atoi(op_arg);
 		}
 		op_fn = op_check(opcode, line_number);
 		op_fn(&stack, line_number);

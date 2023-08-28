@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <stdio.h>
 
-extern int value;
+extern int data_structure;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -54,6 +54,8 @@ void pchar_instruction(stack_t **stack, unsigned int line_number);
 void pstr_instruction(stack_t **stack, unsigned int line_number);
 void rotl_instruction(stack_t **stack, unsigned int line_number);
 void rotr_instruction(stack_t **stack, unsigned int line_number);
+void stack_instruction(stack_t **stack, unsigned int line_number);
+void queue_instruction(stack_t **stack, unsigned int line_number);
 
 /***/
 void(*op_check(char *str, unsigned int line_number))(stack_t **, unsigned int);

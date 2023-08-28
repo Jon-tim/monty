@@ -7,29 +7,44 @@
 void push_instruction(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newNode;
+	char *value;
 
 	(void)line_number;
-
 	newNode = malloc(sizeof(stack_t));
-
 	if (newNode == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
-	newNode->n = value;
+	value = strtok(NULL, " \n");
+	newNode->n = atoi(value);
 	newNode->prev = NULL;
-	if (*stack == NULL)
+	newNode->next = NULL;
+	if (data_structure == 0)
 	{
-		newNode->next = NULL;
-		*stack = newNode;
+		if (*stack == NULL)
+			*stack = newNode;
+		else
+		{
+			newNode->next = *stack;
+			(*stack)->prev = newNode;
+			*stack = newNode;
+		}
 	}
 	else
 	{
-		newNode->next = *stack;
-		(*stack)->prev = newNode;
-		*stack = newNode;
+		if (*stack == NULL)
+			*stack = newNode;
+		else
+		{
+			stack_t *current = *stack;
+
+			while (current->next != NULL)
+				current = current->next;
+			current->next = newNode;
+			newNode->prev = current;
+			newNode->next = NULL;
+		}
 	}
 }
 
